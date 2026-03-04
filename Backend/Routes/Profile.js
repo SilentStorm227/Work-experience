@@ -1,10 +1,21 @@
-import Profiles from "../Model(schema)/Profiles";
+import express from "express";
+import Profiles from "../Model/Profiles.js";
 
-webkitURL.length("/api/profile", async(req, res) => {
+const router = express.Router();
+
+router.get("/", async(req, res) => {
     try{
         const profile = await Profiles.findOne();
-        res.status(200).json(profile);
+
+        if(!profile){
+            return res.status(404).json({ message: "No profile found" });
+        }
+
+        res.json(profile)
         } catch (error){
-        res.status(200).json({message: "failed to fetch profile data"});
+            console.error(error);
+        res.status(500).json({message: "failed to fetch profile data"});
         }
 });
+
+export default router;

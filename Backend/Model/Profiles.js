@@ -19,14 +19,14 @@ const profileSchema = new mongoose.Schema({
     technicalSkills: [
         {
             skills: String,
-            level: Number
+            level: {type: Number, min:1, max: 5}
         }
     ],
 
     softSkills: [
         {
             skills: String,
-            level: Number
+            level: {type: Number, min:1, max: 5}
         }
     ],
 
