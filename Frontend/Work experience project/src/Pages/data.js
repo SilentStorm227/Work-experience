@@ -1,37 +1,37 @@
 export const employees = [
-  {
-    id: 1,
-    name: "Amira Patel",
-    role: "Frontend Developer",
-    department: "Engineering",
-    skills: ["React", "TypeScript", "Accessibility", "UI Testing", "Design Systems"],
-    softSkills: ["Communication", "Adaptability", "Client confidence", "Mentoring"],
-    certifications: ["AWS Cloud Practitioner", "Scrum Foundation"],
-    leadershipScore: 74,
-    qualifications: {
-      Programming: ["JavaScript", "TypeScript"],
-      Backend: ["Node basics", "REST APIs"],
-      Databases: ["PostgreSQL fundamentals"],
-      Tools: ["Git", "Figma", "Jest"],
-      Web: ["WCAG 2.2", "Performance optimization"]
-    },
-    technicalRatings: {
-      programmingLanguages: 5,
-      systemsKnowledge: 3,
-      softwareTools: 5,
-      industryKnowledge: 4
-    },
-    softRatings: {
-      communication: 5,
-      presentation: 4,
-      teamwork: 5,
-      leadership: 3,
-      timeManagement: 4,
-      clientConfidence: 4,
-      problemSolving: 4
-    },
-    developmentFocus: ["Cloud architecture", "Cross-team leadership"]
-  },
+  // {
+  //   id: 1,
+  //   name: "Amira Patel",
+  //   role: "Frontend Developer",
+  //   department: "Engineering",
+  //   skills: ["React", "TypeScript", "Accessibility", "UI Testing", "Design Systems"],
+  //   softSkills: ["Communication", "Adaptability", "Client confidence", "Mentoring"],
+  //   certifications: ["AWS Cloud Practitioner", "Scrum Foundation"],
+  //   leadershipScore: 74,
+  //   qualifications: {
+  //     Programming: ["JavaScript", "TypeScript"],
+  //     Backend: ["Node basics", "REST APIs"],
+  //     Databases: ["PostgreSQL fundamentals"],
+  //     Tools: ["Git", "Figma", "Jest"],
+  //     Web: ["WCAG 2.2", "Performance optimization"]
+  //   },
+  //   technicalRatings: {
+  //     programmingLanguages: 5,
+  //     systemsKnowledge: 3,
+  //     softwareTools: 5,
+  //     industryKnowledge: 4
+  //   },
+  //   softRatings: {
+  //     communication: 5,
+  //     presentation: 4,
+  //     teamwork: 5,
+  //     leadership: 3,
+  //     timeManagement: 4,
+  //     clientConfidence: 4,
+  //     problemSolving: 4
+  //   },
+  //   developmentFocus: ["Cloud architecture", "Cross-team leadership"]
+  // },
   {
     id: 2,
     name: "Daniel Cole",
