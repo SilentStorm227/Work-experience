@@ -339,6 +339,11 @@ body {
   border-radius: 12px;
 }
 
+.global-profile-shortcuts {
+  max-width: 1460px;
+  margin: 0 auto 14px;
+}
+
 .profile-sub-tab.active {
   border-color: #0056d6;
   background: #0e63ff;

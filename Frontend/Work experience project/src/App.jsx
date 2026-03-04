@@ -16,6 +16,11 @@ const navItems = [
   { id: "skills", label: "Soft Skills & People Development" },
   { id: "analysis", label: "Overall analysis" }
 ];
+const profileQuickTabs = [
+  { id: "pc", label: "Professional certificates" },
+  { id: "tq", label: "Technical qualifications" },
+  { id: "training", label: "Personal training dashboard" }
+];
 
 const APP_STATE_KEY = "__employee_tracker_state__";
 const APP_STORAGE_KEY = "__employee_tracker_state_snapshot__";
@@ -188,6 +193,27 @@ function App() {
           </div>
         )}
       </header>
+
+      {(activePage === "pc" || activePage === "tq" || activePage === "training") && (
+        <div className="global-profile-shortcuts">
+          <div className="profile-sub-nav profile-sub-nav-main">
+            {profileQuickTabs.map((tab) => (
+              <button
+                type="button"
+                key={tab.id}
+                className={`profile-sub-tab profile-sub-tab-main ${activePage === tab.id ? "active" : ""}`}
+                onClick={() =>
+                  commitNavigation({
+                    activePage: tab.id
+                  })
+                }
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {pageNode}
     </main>
