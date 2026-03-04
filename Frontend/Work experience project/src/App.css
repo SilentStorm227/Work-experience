@@ -50,12 +50,14 @@ body {
   display: flex;
   flex-wrap: nowrap;
   gap: 6px;
+  align-items: center;
   background: rgba(255, 255, 255, 0.84);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 10px;
+  padding: 8px 10px;
   margin: 0 auto 16px;
   max-width: 1460px;
+  min-height: 58px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
   backdrop-filter: blur(8px);
@@ -65,7 +67,7 @@ body {
   border: 1px solid transparent;
   background: transparent;
   padding: 7px 9px;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
   color: #2f3d54;
@@ -86,34 +88,38 @@ body {
 
 .profile-top-tab {
   margin-left: auto;
-  min-width: 190px;
-  padding: 6px 10px;
+  min-width: 170px;
+  height: 38px;
+  padding: 4px 10px;
   border: 1px solid #0056d6;
   background: #0e63ff;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 8px;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .profile-top-avatar {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   border-radius: 999px;
   display: grid;
   place-items: center;
-  border: 2px solid #0056d6;
+  border: 1px solid #0056d6;
   background: #fff;
   color: #0e63ff;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 0;
+  font-size: 12px;
 }
 
 .profile-top-name {
-  font-size: 20px;
-  line-height: 1.1;
+  font-size: 14px;
+  line-height: 1;
   font-weight: 700;
   color: #ffffff;
 }
@@ -138,13 +144,13 @@ body {
 
 .page-subtitle,
 .muted {
-  font-size: 18px;
+  font-size: 19px;
   margin: 0 0 18px;
   color: var(--muted);
 }
 
 .muted.compact {
-  font-size: 14px;
+  font-size: 17px;
   margin-top: 12px;
 }
 
@@ -189,7 +195,7 @@ body {
 }
 
 .profile-role {
-  font-size: 14px;
+  font-size: 18px;
   opacity: 0.85;
 }
 
@@ -206,12 +212,12 @@ body {
   color: #234c87;
   padding: 4px 8px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .profile-layout {
   display: grid;
-  grid-template-columns: 300px 1fr 360px;
+  grid-template-columns: minmax(280px, 1fr) minmax(0, 2fr);
   gap: 28px;
 }
 
@@ -232,7 +238,7 @@ body {
 .directory-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 16px;
   table-layout: fixed;
 }
 
@@ -249,7 +255,7 @@ body {
 .directory-table th,
 .directory-table td {
   border: 1px solid #c8dcff;
-  padding: 6px;
+  padding: 8px;
   text-align: left;
   background: #ffffff;
   vertical-align: top;
@@ -268,7 +274,7 @@ body {
   padding: 6px 8px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .directory-button:hover {
@@ -287,6 +293,95 @@ body {
 
 .profile-main {
   min-width: 0;
+}
+
+.profile-sub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.profile-sub-nav-left {
+  margin-top: 12px;
+  margin-bottom: 0;
+  flex-direction: column;
+}
+
+.profile-sub-tab {
+  border: 1px solid #7fb0ff;
+  background: #e8f1ff;
+  color: #13438d;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+}
+
+.profile-sub-tab.active {
+  border-color: #0056d6;
+  background: #0e63ff;
+  color: #fff;
+  font-weight: 700;
+}
+
+.profile-skill-row {
+  margin-bottom: 14px;
+}
+
+.profile-content-card {
+  border: 1px solid #c8dcff;
+  background: #f7fbff;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.profile-content-card .question {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.personal-train-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0 16px;
+}
+
+.personal-stat {
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid transparent;
+}
+
+.personal-stat h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.personal-stat strong {
+  font-size: 28px;
+}
+
+.personal-stat.completed {
+  background: #e9f8ef;
+  border-color: #8ac99f;
+}
+
+.personal-stat.progress {
+  background: #fff3df;
+  border-color: #f0c07f;
+}
+
+.personal-stat.not-started {
+  background: #fff3f3;
+  border-color: #d86f6f;
+}
+
+.personal-subtitle {
+  margin: 10px 0 8px;
+  font-size: 22px;
 }
 
 .linked-names {
@@ -329,7 +424,7 @@ body {
 }
 
 .question {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 600;
   margin: 30px 0 8px;
 }
@@ -343,7 +438,7 @@ body {
 .chip {
   padding: 6px 10px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -361,6 +456,8 @@ body {
   margin: 0;
   padding-left: 20px;
   color: #3c4f6a;
+  font-size: 18px;
+  line-height: 1.45;
 }
 
 .focus-list li {
@@ -370,6 +467,12 @@ body {
 .mini-chart {
   border-left: 2px solid #c8d2df;
   padding-left: 20px;
+}
+
+.capability-panel-left {
+  margin-top: 14px;
+  border-left: none;
+  padding-left: 0;
 }
 
 .mini-chart h3 {
@@ -400,13 +503,20 @@ body {
 }
 
 .capability-badge {
-  width: 38px;
-  height: 38px;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  max-width: 56px;
+  max-height: 56px;
+  flex: 0 0 56px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: grid;
   place-items: center;
   color: #fff;
   font-weight: 700;
+  font-size: 24px;
 }
 
 .capability-meta {
@@ -415,12 +525,21 @@ body {
 }
 
 .capability-meta strong {
-  font-size: 14px;
+  font-size: 19px;
 }
 
 .capability-meta span {
-  font-size: 12px;
+  font-size: 17px;
   color: #556983;
+  line-height: 1.35;
+}
+
+.capability-grade-title {
+  color: #1a3f74;
+}
+
+.personal-capability-desc {
+  margin-top: 10px;
 }
 
 .grade-a {
@@ -499,7 +618,7 @@ body {
 }
 
 .matrix-table.matrix-five {
-  font-size: 18px;
+  font-size: 21px;
 }
 
 .matrix-table.matrix-five th,
@@ -514,7 +633,7 @@ body {
 
 .scale-note {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 22px;
   color: #42526a;
 }
 
@@ -534,7 +653,7 @@ body {
 
 .analysis-box .question {
   margin-top: 0;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .analysis-box .muted {
@@ -563,6 +682,7 @@ body {
 .cert-card p {
   margin: 8px 0;
   color: #5f507e;
+  font-size: 18px;
 }
 
 .cert-card ul {
@@ -625,7 +745,7 @@ body {
 
 .panel-box h3 {
   text-align: center;
-  font-size: 26px;
+  font-size: 28px;
   margin: 0 0 18px;
 }
 
@@ -635,6 +755,7 @@ body {
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
+  font-size: 17px;
 }
 
 .h-bars span {
@@ -666,6 +787,7 @@ body {
 
 .type-bars div {
   text-align: center;
+  font-size: 17px;
 }
 
 .type-bars span {
@@ -699,6 +821,10 @@ body {
   }
 
   .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-train-grid {
     grid-template-columns: 1fr;
   }
 
