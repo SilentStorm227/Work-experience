@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 
 const profileSchema = new mongoose.Schema({
-    userId: { type: String, required: true }, // or ObjectId later
-    name: String,
+    userId: {
+        type: String,
+        required: true,
+        unique: true
+    },
 
     professionalCertificates: [
         {

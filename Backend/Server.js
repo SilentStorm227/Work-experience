@@ -15,7 +15,7 @@ web.use(express.json());
 
 mongoose.connect("mongodb://127.0.0.1:27017/Workexperience")
     .then(() => console.log("Mongodb connected"))
-    .catch(err => console.error(err));
+    .catch(error => console.error(error));
 
 web.use("/api/profile", Profile);
 web.get("/test", (req, res) => {

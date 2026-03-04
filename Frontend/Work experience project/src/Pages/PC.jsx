@@ -3,12 +3,20 @@ import { useEffect, useState } from "react";
 function PC() {
   const [certificates, setCertificates] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/profile/certificates")
-    .then((res) => res.json())
+    fetch("http://localhost:5000/api/profile/Daniel-Cole")
+    .then((res) => {
+      if (!res.ok){
+        throw new Error(`HTTP error ${res.status}`);
+      }
+      return res.json();
+    })
+
     .then((data) => {
-      setCertificates(data);
+      // setProfile(data);
+      setCertificates(data.professionalCertificates);
       setLoading(false);
     })
     .catch((err) => {
