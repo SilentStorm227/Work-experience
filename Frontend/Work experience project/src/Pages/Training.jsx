@@ -1,5 +1,18 @@
 function Training() {
-  const months = [5, 3, 5, 4, 5, 4, 2, 5, 4, 6, 3, 2];
+  const months = [
+    { month: "Jan", completed: 5, ongoing: 2 },
+    { month: "Feb", completed: 3, ongoing: 2 },
+    { month: "Mar", completed: 5, ongoing: 1 },
+    { month: "Apr", completed: 4, ongoing: 2 },
+    { month: "May", completed: 5, ongoing: 1 },
+    { month: "Jun", completed: 4, ongoing: 2 },
+    { month: "Jul", completed: 2, ongoing: 3 },
+    { month: "Aug", completed: 5, ongoing: 2 },
+    { month: "Sep", completed: 4, ongoing: 2 },
+    { month: "Oct", completed: 6, ongoing: 1 },
+    { month: "Nov", completed: 3, ongoing: 2 },
+    { month: "Dec", completed: 2, ongoing: 3 }
+  ];
 
   return (
     <section className="page-shell training-layout">
@@ -14,12 +27,24 @@ function Training() {
       <div className="training-main">
         <h2 className="section-title">Monthly Training Numbers</h2>
         <p className="muted">Trend view of how many training sessions were delivered each month.</p>
+        <div className="month-legend">
+          <span><i className="month-legend-box month-bar-completed" />Completed</span>
+          <span><i className="month-legend-box month-bar-ongoing" />Ongoing</span>
+        </div>
         <div className="month-bars">
-          {months.map((value, index) => (
-            <div key={index} className="month-item">
-              <span>{value}</span>
-              <div style={{ height: `${value * 12}px` }} className="month-bar" />
-              <small>{["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][index]}</small>
+          {months.map((item) => (
+            <div key={item.month} className="month-item">
+              <div className="month-bar-pair">
+                <div className="month-bar-group">
+                  <span className="month-value">{item.completed}</span>
+                  <div style={{ height: `${item.completed * 12}px` }} className="month-bar month-bar-completed" />
+                </div>
+                <div className="month-bar-group">
+                  <span className="month-value">{item.ongoing}</span>
+                  <div style={{ height: `${item.ongoing * 12}px` }} className="month-bar month-bar-ongoing" />
+                </div>
+              </div>
+              <small>{item.month}</small>
             </div>
           ))}
         </div>

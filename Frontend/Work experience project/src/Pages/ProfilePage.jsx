@@ -35,143 +35,13 @@ const PROFILE_TABS = [
   { id: "training", label: "Personal training dashboard" }
 ];
 
-function average(values) {
-  return values.reduce((sum, value) => sum + value, 0) / values.length;
-}
-
 function ProfilePage({
   employee,
-  employees,
-  onSelectProfile,
-  profileSubTab,
-  onProfileSubTabChange
+  onNavigateMainTab
 }) {
-  const techAvg = average(Object.values(employee.technicalRatings));
-  const softAvg = average(Object.values(employee.softRatings));
-  const completedTrainings = Math.max(1, Math.round((techAvg + softAvg) / 2));
-  const inProgressTrainings = Math.max(1, employee.developmentFocus.length - 1);
-  const notStartedTrainings = Math.max(1, 5 - completedTrainings - inProgressTrainings);
-  const qualificationRows = Object.entries(employee.qualifications);
-
-  function renderMainPanel() {
-    if (profileSubTab === "pc") {
-      return (
-        <div className="profile-content-card">
-          <h2 className="question">Professional certificates</h2>
-          <p className="muted">Certifications currently held by {employee.name}.</p>
-          <ul className="focus-list">
-            {employee.certifications.map((cert) => (
-              <li key={cert}>{cert}</li>
-            ))}
-          </ul>
-        </div>
-      );
-    }
-
-    if (profileSubTab === "tq") {
-      return (
-        <div className="profile-content-card">
-          <h2 className="question">Technical qualifications</h2>
-          <p className="muted">Category-based technical profile for this employee.</p>
-          <div className="table-scroll">
-            <table className="matrix-table">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Qualifications</th>
-                </tr>
-              </thead>
-              <tbody>
-                {qualificationRows.map(([category, values]) => (
-                  <tr key={category}>
-                    <td>{category}</td>
-                    <td>{values.join(", ")}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className="profile-content-card">
-        <h2 className="question">Personal training dashboard</h2>
-        <p className="muted">Individual training view for {employee.name} (separate from team dashboard).</p>
-
-        <div className="personal-train-grid">
-          <article className="personal-stat completed">
-            <h4>Completed</h4>
-            <strong>{completedTrainings}</strong>
-          </article>
-          <article className="personal-stat progress">
-            <h4>In progress</h4>
-            <strong>{inProgressTrainings}</strong>
-          </article>
-          <article className="personal-stat not-started">
-            <h4>Not started</h4>
-            <strong>{notStartedTrainings}</strong>
-          </article>
-        </div>
-
-        <h3 className="personal-subtitle">Planned development actions</h3>
-        <ul className="focus-list">
-          {employee.developmentFocus.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-
   return (
     <section className="page-shell profile-layout">
       <aside className="employee-directory">
-        <details open>
-          <summary>Other employees</summary>
-          <table className="directory-table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Role</th>
-              </tr>
-            </thead>
-            <tbody>
-              {employees.map((item) => (
-                  <tr
-                    key={item.id}
-                    className={item.id === employee.id ? "directory-row-active" : ""}
-                  >
-                    <td>
-                      <button
-                        type="button"
-                        className={`directory-button ${item.id === employee.id ? "active" : ""}`}
-                        onClick={() => onSelectProfile(item)}
-                      >
-                        {item.name}
-                      </button>
-                    </td>
-                    <td>{item.role}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </details>
-
-        <div className="profile-sub-nav profile-sub-nav-left">
-          {PROFILE_TABS.map((tab) => (
-            <button
-              type="button"
-              key={tab.id}
-              className={`profile-sub-tab ${profileSubTab === tab.id ? "active" : ""}`}
-              onClick={() => onProfileSubTabChange(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
         <div className="mini-chart capability-panel capability-panel-left">
           <h3>Capability to run projects</h3>
           <p className="muted compact">A is strongest readiness, F means heavy support needed.</p>
@@ -196,6 +66,19 @@ function ProfilePage({
       </aside>
 
       <div className="profile-main">
+        <div className="profile-sub-nav profile-sub-nav-main">
+          {PROFILE_TABS.map((tab) => (
+            <button
+              type="button"
+              key={tab.id}
+              className="profile-sub-tab profile-sub-tab-main"
+              onClick={() => onNavigateMainTab(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
         <h1 className="page-title">{employee.name}</h1>
         <p className="muted">
           {employee.role} | {employee.department}
@@ -208,8 +91,19 @@ function ProfilePage({
             <span key={skill} className="chip chip-soft">{skill}</span>
           ))}
         </div>
-
-        {renderMainPanel()}
+        <div className="profile-content-card">
+          <h2 className="question">Profile summary</h2>
+          <p className="muted">
+            Use the shortcut tabs above to open this employee&apos;s certificates, technical qualifications,
+            and personal training dashboard in the main view.
+          </p>
+          <h3 className="personal-subtitle">Current development focus</h3>
+          <ul className="focus-list">
+            {employee.developmentFocus.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
     </section>

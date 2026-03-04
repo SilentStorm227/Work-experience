@@ -49,12 +49,12 @@ body {
 .top-nav {
   display: flex;
   flex-wrap: nowrap;
-  gap: 6px;
+  gap: 14px;
   align-items: center;
   background: rgba(255, 255, 255, 0.84);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 8px 10px;
+  padding: 10px 16px;
   margin: 0 auto 16px;
   max-width: 1460px;
   min-height: 58px;
@@ -66,12 +66,20 @@ body {
 .top-nav-item {
   border: 1px solid transparent;
   background: transparent;
-  padding: 7px 9px;
+  padding: 10px 14px;
   font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  min-height: 40px;
+  min-width: 0;
   border-radius: 8px;
   cursor: pointer;
   color: #2f3d54;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
 }
 
 .top-nav-item:hover {
@@ -308,6 +316,10 @@ body {
   flex-direction: column;
 }
 
+.profile-sub-nav-main {
+  margin-bottom: 18px;
+}
+
 .profile-sub-tab {
   border: 1px solid #7fb0ff;
   background: #e8f1ff;
@@ -317,6 +329,14 @@ body {
   cursor: pointer;
   font-size: 16px;
   text-align: left;
+}
+
+.profile-sub-tab-main {
+  font-size: 21px;
+  padding: 14px 20px;
+  min-height: 56px;
+  min-width: 280px;
+  border-radius: 12px;
 }
 
 .profile-sub-tab.active {
@@ -723,16 +743,62 @@ body {
 }
 
 .month-item {
-  width: 52px;
+  width: 64px;
   display: grid;
   justify-items: center;
   gap: 4px;
 }
 
+.month-legend {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #42526a;
+}
+
+.month-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.month-legend-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.month-bar-pair {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.month-bar-group {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+}
+
+.month-value {
+  font-size: 13px;
+  color: #3a4f6a;
+}
+
 .month-bar {
-  width: 20px;
-  background: #9ec2ec;
+  width: 16px;
   border-radius: 4px 4px 0 0;
+}
+
+.month-bar-completed {
+  background: #9ec2ec;
+}
+
+.month-bar-ongoing {
+  background: #f0ab5d;
 }
 
 .panel-box {

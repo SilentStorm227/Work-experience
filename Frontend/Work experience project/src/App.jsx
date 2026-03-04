@@ -12,22 +12,18 @@ import { employees } from "./Pages/data";
 
 const navItems = [
   { id: "home", label: "Profiles" },
-  { id: "pc", label: "Professional certificates" },
-  { id: "tq", label: "Technical qualifications" },
   { id: "ts", label: "Technical skills" },
   { id: "skills", label: "Soft Skills & People Development" },
-  { id: "training", label: "Training Dashboard" },
   { id: "analysis", label: "Overall analysis" }
 ];
 
 const APP_STATE_KEY = "__employee_tracker_state__";
 const APP_STORAGE_KEY = "__employee_tracker_state_snapshot__";
 
-function buildState(activePage, selectedEmployee, profileSubTab) {
+function buildState(activePage, selectedEmployee) {
   return {
     activePage,
-    selectedEmployee,
-    profileSubTab
+    selectedEmployee
   };
 }
 
@@ -37,16 +33,12 @@ function resolveEmployee(employeeId) {
 
 function extractAppState(state) {
   if (!state || !state[APP_STATE_KEY]) return null;
-  return buildState(
-    state.activePage || "home",
-    resolveEmployee(state.selectedEmployeeId),
-    state.profileSubTab || "pc"
-  );
+  return buildState(state.activePage || "home", resolveEmployee(state.selectedEmployeeId));
 }
 
 function getInitialAppState() {
   if (typeof window === "undefined") {
-    return buildState("home", employees[0], "pc");
+    return buildState("home", employees[0]);
   }
 
   const fromHistory = extractAppState(window.history.state);
@@ -54,24 +46,19 @@ function getInitialAppState() {
 
   try {
     const raw = window.sessionStorage.getItem(APP_STORAGE_KEY);
-    if (!raw) return buildState("home", employees[0], "pc");
+    if (!raw) return buildState("home", employees[0]);
     const parsed = JSON.parse(raw);
-    return buildState(
-      parsed.activePage || "home",
-      resolveEmployee(parsed.selectedEmployeeId),
-      parsed.profileSubTab || "pc"
-    );
+    return buildState(parsed.activePage || "home", resolveEmployee(parsed.selectedEmployeeId));
   } catch {
-    return buildState("home", employees[0], "pc");
+    return buildState("home", employees[0]);
   }
 }
 
-function toHistoryPayload(activePage, selectedEmployee, profileSubTab) {
+function toHistoryPayload(activePage, selectedEmployee) {
   return {
     [APP_STATE_KEY]: true,
     activePage,
-    selectedEmployeeId: selectedEmployee.id,
-    profileSubTab
+    selectedEmployeeId: selectedEmployee.id
   };
 }
 
@@ -87,22 +74,18 @@ function App() {
   const initialAppState = getInitialAppState();
   const [activePage, setActivePage] = useState(initialAppState.activePage);
   const [selectedEmployee, setSelectedEmployee] = useState(initialAppState.selectedEmployee);
-  const [profileSubTab, setProfileSubTab] = useState(initialAppState.profileSubTab);
 
   function applyState(nextState) {
     setActivePage(nextState.activePage);
     setSelectedEmployee(nextState.selectedEmployee);
-    setProfileSubTab(nextState.profileSubTab);
   }
 
   function resolveState(partial) {
     const nextPage = partial.activePage ?? activePage;
     const nextEmployee = partial.selectedEmployee ?? selectedEmployee;
-    const nextSubTab = partial.profileSubTab ?? profileSubTab;
     return {
       activePage: nextPage,
-      selectedEmployee: nextEmployee,
-      profileSubTab: nextSubTab
+      selectedEmployee: nextEmployee
     };
   }
 
@@ -111,7 +94,7 @@ function App() {
     applyState(resolved);
 
     if (push) {
-      window.history.pushState(toHistoryPayload(resolved.activePage, resolved.selectedEmployee, resolved.profileSubTab), "");
+      window.history.pushState(toHistoryPayload(resolved.activePage, resolved.selectedEmployee), "");
     }
   }
 
@@ -121,8 +104,7 @@ function App() {
       if (!restored) {
         applyState({
           activePage: "home",
-          selectedEmployee: employees[0],
-          profileSubTab: "pc"
+          selectedEmployee: employees[0]
         });
         return;
       }
@@ -134,10 +116,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const payload = toHistoryPayload(activePage, selectedEmployee, profileSubTab);
+    const payload = toHistoryPayload(activePage, selectedEmployee);
     window.history.replaceState(payload, "");
     window.sessionStorage.setItem(APP_STORAGE_KEY, JSON.stringify(payload));
-  }, [activePage, profileSubTab, selectedEmployee]);
+  }, [activePage, selectedEmployee]);
 
   const pageNode = useMemo(() => {
     if (activePage === "home") {
@@ -147,8 +129,7 @@ function App() {
           onSelectProfile={(employee) => {
             commitNavigation({
               activePage: "profile",
-              selectedEmployee: employee,
-              profileSubTab: "pc"
+              selectedEmployee: employee
             });
           }}
         />
@@ -166,11 +147,9 @@ function App() {
               selectedEmployee: employee
             })
           }
-          profileSubTab={profileSubTab}
-          onProfileSubTabChange={(tabId) =>
+          onNavigateMainTab={(tabId) =>
             commitNavigation({
-              activePage: "profile",
-              profileSubTab: tabId
+              activePage: tabId
             })
           }
         />
@@ -183,7 +162,7 @@ function App() {
     if (activePage === "skills") return <Skills employees={employees} />;
     if (activePage === "training") return <Training />;
     return <Analysis employees={employees} />;
-  }, [activePage, profileSubTab, selectedEmployee]);
+  }, [activePage, selectedEmployee]);
 
   return (
     <main className="app-shell">
