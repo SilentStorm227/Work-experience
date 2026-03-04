@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap");
+
+.home-dashboard {
+  --bg-top: #f7f8fc;
+  --bg-bottom: #ebefff;
+  --panel: rgba(255, 255, 255, 0.88);
+  --panel-border: #d8def7;
+  --ink: #1d223a;
+  --muted: #5e6787;
+  --hard: #dbe8ff;
+  --hard-ink: #2156b1;
+  --soft: #ffeccc;
+  --soft-ink: #8f5900;
+
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background:
+    radial-gradient(circle at 20% 20%, #ffffff 0, #ffffff00 40%),
+    linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+}
+
+.skills-panel {
+  width: min(1040px, 100%);
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 55px rgba(26, 38, 89, 0.1);
+}
+
+.skills-header h1 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+}
+
+.skills-header p {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: #425ba8;
+  font-weight: 700;
+}
+
+.employee-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.employee-card {
+  border: 1px solid #e1e6f8;
+  border-radius: 14px;
+  padding: 16px;
+  background: #ffffff;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.employee-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(35, 51, 110, 0.12);
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #d7e2ff, #b8cbff);
+  display: grid;
+  place-items: center;
+  color: #213470;
+  font-weight: 700;
+}
+
+.employee-card h2 {
+  margin: 10px 0 2px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tag {
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.tag-hard {
+  background: var(--hard);
+  color: var(--hard-ink);
+}
+
+.tag-soft {
+  background: var(--soft);
+  color: var(--soft-ink);
+}
+
+@media (max-width: 900px) {
+  .employee-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .home-dashboard {
+    padding: 14px;
+  }
+
+  .skills-panel {
+    padding: 18px;
+  }
+
+  .employee-grid {
+    grid-template-columns: 1fr;
+  }
+}
