@@ -7,6 +7,7 @@ import TS from "./Pages/TS";
 import Skills from "./Pages/Skills";
 import Training from "./Pages/Training";
 import Analysis from "./Pages/Analysis";
+import DueBonus from "./Pages/DueBonus";
 import ProfilePage from "./Pages/ProfilePage";
 import { employees } from "./Pages/data";
 
@@ -14,7 +15,8 @@ const navItems = [
   { id: "home", label: "Profiles" },
   { id: "ts", label: "Technical skills" },
   { id: "skills", label: "Soft Skills & People Development" },
-  { id: "analysis", label: "Overall analysis" }
+  { id: "analysis", label: "Overall analysis" },
+  { id: "bonus", label: "Due bonus" }
 ];
 const profileQuickTabs = [
   { id: "pc", label: "Professional certificates" },
@@ -166,6 +168,7 @@ function App() {
     if (activePage === "ts") return <TS employees={employees} />;
     if (activePage === "skills") return <Skills employees={employees} />;
     if (activePage === "training") return <Training />;
+    if (activePage === "bonus") return <DueBonus />;
     return <Analysis employees={employees} />;
   }, [activePage, selectedEmployee]);
 
