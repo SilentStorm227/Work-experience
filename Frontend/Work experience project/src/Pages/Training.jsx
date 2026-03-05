@@ -13,6 +13,17 @@ function Training() {
     { month: "Nov", completed: 3, ongoing: 2 },
     { month: "Dec", completed: 2, ongoing: 3 }
   ];
+  const statusData = [
+    { label: "Completed", value: 19, css: "status-completed" },
+    { label: "In progress", value: 8, css: "status-progress" },
+    { label: "Not started", value: 21, css: "status-not-started" }
+  ];
+  const maxStatus = Math.max(...statusData.map((item) => item.value));
+  const typeData = [
+    { label: "Online", value: 28, css: "type-online", height: 90 },
+    { label: "In-house", value: 16, css: "type-house", height: 65 },
+    { label: "External", value: 4, css: "type-external", height: 20 }
+  ];
 
   return (
     <section className="page-shell training-layout">
@@ -52,18 +63,29 @@ function Training() {
         <div className="panel-box">
           <h3>Training Status</h3>
           <div className="h-bars">
-            <div><label>Completed</label><span style={{ width: "32%" }} className="status-completed" /></div>
-            <div><label>In progress</label><span style={{ width: "12%" }} className="status-progress" /></div>
-            <div><label>Not started</label><span style={{ width: "70%" }} className="status-not-started" /></div>
+            {statusData.map((item) => (
+              <div key={item.label}>
+                <label>{item.label}</label>
+                <span
+                  style={{ width: `${(item.value / maxStatus) * 100}%` }}
+                  className={item.css}
+                />
+                <em>{item.value}</em>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="panel-box">
           <h3>Training Types</h3>
           <div className="type-bars">
-            <div><span className="type-online" style={{ height: "90px" }} />Online</div>
-            <div><span className="type-house" style={{ height: "65px" }} />In-house</div>
-            <div><span className="type-external" style={{ height: "20px" }} />External</div>
+            {typeData.map((item) => (
+              <div key={item.label}>
+                <b>{item.value}</b>
+                <span className={item.css} style={{ height: `${item.height}px` }} />
+                {item.label}
+              </div>
+            ))}
           </div>
         </div>
       </div>

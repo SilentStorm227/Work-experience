@@ -822,11 +822,18 @@ body {
 
 .h-bars > div {
   display: grid;
-  grid-template-columns: 160px 1fr;
+  grid-template-columns: 170px 1fr 48px;
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
   font-size: 17px;
+}
+
+.h-bars em {
+  font-style: normal;
+  font-weight: 700;
+  color: #395273;
+  text-align: right;
 }
 
 .h-bars span {
@@ -859,6 +866,13 @@ body {
 .type-bars div {
   text-align: center;
   font-size: 17px;
+}
+
+.type-bars b {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 18px;
+  color: #2d4668;
 }
 
 .type-bars span {
