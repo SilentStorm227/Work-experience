@@ -22,12 +22,12 @@ const profileSchema = new mongoose.Schema({
         }
     ],
 
-    technicalSkills: [
-        {
-            skills: String,
-            level: {type: Number, min:1, max: 5}
-        }
-    ],
+    technicalSkills: {
+        programmingLanguages: { type: Number, min: 1, max: 5 },
+        systemsKnowledge: { type: Number, min: 1, max: 5 },
+        softwareTools: { type: Number, min: 1, max: 5 },
+        industryKnowledge: { type: Number, min: 1, max: 5 }
+    },
 
     softSkills: [
         {
@@ -36,13 +36,24 @@ const profileSchema = new mongoose.Schema({
         }
     ],
 
-    trainingDashboard: 
-        {
-            trainingNumbers: {type: Number, default: 0},
-            hours: {type: Number, default: 0},
-            janToatal: {type: Number, default: 0},
-            janCompleted: {type: Number, default: 0},
-        },
+    trainingDashboard: {
+        totalTrainings: { type: Number, default: 0 },
+        totalHours: { type: Number, default: 0 },
+        monthly: {
+            jan: { total: Number, completed: Number },
+            feb: { total: Number, completed: Number },
+            mar: { total: Number, completed: Number },
+            apr: { total: Number, completed: Number },
+            may: { total: Number, completed: Number },
+            jun: { total: Number, completed: Number },
+            jul: { total: Number, completed: Number },
+            aug: { total: Number, completed: Number },
+            sep: { total: Number, completed: Number },
+            oct: { total: Number, completed: Number },
+            nov: { total: Number, completed: Number },
+            dec: { total: Number, completed: Number }
+        }
+    },
 
     trainingStatus: 
                 {

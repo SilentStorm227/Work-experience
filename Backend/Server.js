@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import Profile from "./Routes/Profile.js"
+import bonusRoutes from "./Routes/Bonus.js"
+
 
 const web = express();
 web.use(cors()); 
@@ -18,6 +20,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/Workexperience")
     .catch(error => console.error(error));
 
 web.use("/api/profile", Profile);
+web.use("/api/bonus", bonusRoutes);
 web.get("/test", (req, res) => {
   res.json({ ok: true });
 });
