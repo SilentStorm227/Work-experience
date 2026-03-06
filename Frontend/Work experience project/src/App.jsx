@@ -15,8 +15,8 @@ const navItems = [
   { id: "home", label: "Profiles" },
   { id: "ts", label: "Technical skills" },
   { id: "skills", label: "Soft Skills & People Development" },
-  { id: "analysis", label: "Overall analysis" },
-  { id: "Bonus", label: "Bonus" }
+  { id: "Bonus", label: "Bonus" },
+  { id: "analysis", label: "Overall analysis" }
 ];
 
 const profileQuickTabs = [

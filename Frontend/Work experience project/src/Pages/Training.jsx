@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-function Training() {
-  const months = [
-    { month: "Jan", completed: 5, ongoing: 2 },
-    { month: "Feb", completed: 3, ongoing: 2 },
-    { month: "Mar", completed: 5, ongoing: 1 },
-    { month: "Apr", completed: 4, ongoing: 2 },
-    { month: "May", completed: 5, ongoing: 1 },
-    { month: "Jun", completed: 4, ongoing: 2 },
-    { month: "Jul", completed: 2, ongoing: 3 },
-    { month: "Aug", completed: 5, ongoing: 2 },
-    { month: "Sep", completed: 4, ongoing: 2 },
-    { month: "Oct", completed: 6, ongoing: 1 },
-    { month: "Nov", completed: 3, ongoing: 2 },
-    { month: "Dec", completed: 2, ongoing: 3 }
-  ];
-  const statusData = [
-    { label: "Completed", value: 19, css: "status-completed" },
-    { label: "In progress", value: 8, css: "status-progress" },
-    { label: "Not started", value: 21, css: "status-not-started" }
-  ];
-  const maxStatus = Math.max(...statusData.map((item) => item.value));
-  const typeData = [
-    { label: "Online", value: 28, css: "type-online", height: 90 },
-    { label: "In-house", value: 16, css: "type-house", height: 65 },
-    { label: "External", value: 4, css: "type-external", height: 20 }
-  ];
-=======
 // import { useEffect, useState } from "react";
 
 // const MONTH_LABELS = [
@@ -195,7 +167,6 @@ function Training({ employee }) {
   }, [employee]);
 
   if (loading) return <p>Loading training dashboard…</p>;
->>>>>>> 36cf12c (all commits)
 
   return (
     <section className="page-shell training-layout">
@@ -214,32 +185,14 @@ function Training({ employee }) {
 
       <div className="training-main">
         <h2 className="section-title">Monthly Training Numbers</h2>
-<<<<<<< HEAD
-        <p className="muted">Trend view of how many training sessions were delivered each month.</p>
-        <div className="month-legend">
-          <span><i className="month-legend-box month-bar-completed" />Completed</span>
-          <span><i className="month-legend-box month-bar-ongoing" />Ongoing</span>
-        </div>
-=======
         <p className="muted">
           Trend view of how many training sessions were delivered each month.
         </p>
 
->>>>>>> 36cf12c (all commits)
         <div className="month-bars">
           {months.map((item) => (
             <div key={item.month} className="month-item">
               <div className="month-bar-pair">
-<<<<<<< HEAD
-                <div className="month-bar-group">
-                  <span className="month-value">{item.completed}</span>
-                  <div style={{ height: `${item.completed * 12}px` }} className="month-bar month-bar-completed" />
-                </div>
-                <div className="month-bar-group">
-                  <span className="month-value">{item.ongoing}</span>
-                  <div style={{ height: `${item.ongoing * 12}px` }} className="month-bar month-bar-ongoing" />
-                </div>
-=======
 
                 <div className="month-bar-group">
                   <span className="month-value">{item.completed}</span>
@@ -257,7 +210,6 @@ function Training({ employee }) {
                   />
                 </div>
 
->>>>>>> 36cf12c (all commits)
               </div>
               <small>{item.month}</small>
             </div>
@@ -268,18 +220,6 @@ function Training({ employee }) {
           <h3>Training Status</h3>
 
           <div className="h-bars">
-<<<<<<< HEAD
-            {statusData.map((item) => (
-              <div key={item.label}>
-                <label>{item.label}</label>
-                <span
-                  style={{ width: `${(item.value / maxStatus) * 100}%` }}
-                  className={item.css}
-                />
-                <em>{item.value}</em>
-              </div>
-            ))}
-=======
             <div>
               <label>Completed</label>
               <span style={{ width: `${status?.completed || 0}%` }} className="status-completed" />
@@ -299,7 +239,6 @@ function Training({ employee }) {
               <label>Cancelled</label>
               <span style={{ width: `${status?.cancelled || 0}%` }} className="status-not-started" />
             </div>
->>>>>>> 36cf12c (all commits)
           </div>
         </div>
 
@@ -307,15 +246,6 @@ function Training({ employee }) {
           <h3>Training Types</h3>
 
           <div className="type-bars">
-<<<<<<< HEAD
-            {typeData.map((item) => (
-              <div key={item.label}>
-                <b>{item.value}</b>
-                <span className={item.css} style={{ height: `${item.height}px` }} />
-                {item.label}
-              </div>
-            ))}
-=======
             <div>
               <span className="type-online" style={{ height: `${type?.online || 0}px` }} />
               Online
@@ -330,7 +260,6 @@ function Training({ employee }) {
               <span className="type-external" style={{ height: `${type?.External || 0}px` }} />
               External
             </div>
->>>>>>> 36cf12c (all commits)
           </div>
         </div>
 
