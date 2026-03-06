@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 function TQ({ employee }) {
   const [qualifications, setQualifications] = useState([]);
   const [loading, setLoading] = useState(true);
