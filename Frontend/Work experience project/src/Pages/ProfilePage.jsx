@@ -52,7 +52,22 @@ function ProfilePage({ employee, onNavigateMainTab }) {
   }
 
   const name = formatName(employee.userId);
-  const leadershipScore = employee.leadershipScore || 0;
+
+  function calculateLeadershipScore(employee){
+    const tech = Object.values(employee.technicalSkills || {});
+  const soft = (employee.softSkills || []).map(s => s.level);
+
+  const allScores = [...tech, ...soft];
+
+  if (!allScores.length) return 0;
+
+  const avg = allScores.reduce((sum, v) => sum + v, 0) / allScores.length;
+
+  // convert 1–5 scale to percentage
+  return avg * 20;
+  }
+
+  const leadershipScore = calculateLeadershipScore(employee);
   const grade = getCapabilityGrade(leadershipScore);
 
   return (
@@ -75,7 +90,7 @@ function ProfilePage({ employee, onNavigateMainTab }) {
 
               <div className="capability-meta">
                 <strong className="capability-grade-title">
-                  Rating {grade}
+                  Rating {grade} ({Math.round(leadershipScore)}%)
                 </strong>
 
                 <span>{getCapabilityMessage(grade)}</span>
